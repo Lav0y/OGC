@@ -33,6 +33,7 @@ exports.gpioon = function(req, res) {
 			console.log("exec error: " + error);
 		}
 	});
+	res.status(200).send("GPIO 18 on ")
 };
 
 exports.gpiooff = function(req, res) {
@@ -45,6 +46,7 @@ exports.gpiooff = function(req, res) {
 			console.log("exec error: " + error);
 		}
 	});
+	res.status(200).send("GPIO 18 off")
 };
 
 exports.gpiotoggle = function(req, res) {
@@ -65,6 +67,7 @@ exports.gpiotoggle = function(req, res) {
 			console.log("exec error: " + error);
 		}
 	});
+	res.status(200).send("GPIO 18 Toggled)
 };
 
  

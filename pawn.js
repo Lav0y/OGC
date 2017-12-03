@@ -15,6 +15,10 @@ app.set('view engine', 'ejs');
 app.use('/public', express.static(process.cwd() + '/public'));
 
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended : true}));
+
 // Routes
 app.get('/', pawn.homepage);
 app.post('/gpio/on', pawn.gpioon);
