@@ -17,6 +17,9 @@ app.use('/public', express.static(process.cwd() + '/public'));
 
 // Routes
 app.get('/', pawn.homepage);
+app.post('/gpio/on', pawn.gpioon);
+app.post('/gpio/off', pawn.gpiooff);
+app.post('/gpio/toggle', pawn.gpiotoggle);
 
 // Start Server
 app.listen(port, function(){
