@@ -2,5 +2,5 @@
 
 // Main Pages
 exports.homepage = function(req,res){ 
-	res.render('pages/index');
+	res.render('pages/overwatch');
 };

@@ -3,10 +3,10 @@
 //Load what we will need 
 var express = require('express');
 var app = express();
-var port = process.env.PORT || 8081;
+var port = process.env.PORT || 8080;
 var moment = require('moment');
 // Route files
-var pawn = require('./routes/pawn.js');
+var overwatch = require('./routes/overwatch.js');
 
 // Set the view engine to the amazing ejs!
 app.set('view engine', 'ejs');
@@ -16,7 +16,7 @@ app.use('/public', express.static(process.cwd() + '/public'));
 
 
 // Routes
-app.get('/', pawn.homepage);
+app.get('/', overwatch.homepage);
 
 // Start Server
 app.listen(port, function(){
