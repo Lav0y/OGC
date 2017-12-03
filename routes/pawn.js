@@ -70,7 +70,7 @@ exports.gpiotoggle = function(req, res) {
 		if (error !== null) {
 			console.log("exec error: " + error);
 		}
-		res.status(200).send("GPIO 18 Toggled)
+		res.status(200).send("GPIO 18 Toggled")
 	});
 	
 };
