@@ -28,8 +28,6 @@ exports.gpioon = function(req, res) {
 	var exec = require("child_process").exec;
 	exec("gpio -g mode 18 out" , function(error, stdout, stderr) {
 		console.log("GPIO 18 on")
-		console.log("stdout: " + stdout);
-		console.log("stderr: " + stderr);
 		if (error !== null) {
 			console.log("exec error: " + error);
 		}
@@ -42,8 +40,6 @@ exports.gpiooff = function(req, res) {
 	var exec = require("child_process").exec;
 	exec("gpio -g mode 18 in", function(error, stdout, stderr) {
 		console.log("GPIO 18 off")
-		console.log("stdout: " + stdout);
-		console.log("stderr: " + stderr);
 		if (error !== null) {
 			console.log("exec error: " + error);
 		}
@@ -57,16 +53,12 @@ exports.gpiotoggle = function(req, res) {
 	var exec = require("child_process").exec;
 	exec("gpio -g mode 18 out", function(error, stdout, stderr) {
 		console.log("GPIO 18 Toggled")
-		console.log("stdout: " + stdout);
-		console.log("stderr: " + stderr);
 		if (error !== null) {
 			console.log("exec error: " + error);
 		}
 	});
 	var exec = require("child_process").exec;
-	exec("gpio -g mode 18 in", function(error, stdout, stderr) {
-		console.log("stdout: " + stdout);
-		console.log("stderr: " + stderr);
+	exec("sleep1 ; gpio -g mode 18 in", function(error, stdout, stderr) {
 		if (error !== null) {
 			console.log("exec error: " + error);
 		}
