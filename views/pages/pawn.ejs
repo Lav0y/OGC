@@ -93,15 +93,28 @@
                             <%= rows[i].status %>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-block btn-primary">
-                            TOGGLE
-                            </button>
-                            <button type="button" class="btn btn-block btn-success">
-                            ON
-                            </button>
-                            <button type="button" class="btn btn-block btn-danger">
-                            OFF
-                            </button>
+                           
+                            <input class="btn btn btn-info" name="toggle" id="toggle" value="toggle" type="submit" />
+                            <script>
+                            $('#toggle').click(function() {
+                            $.post('/gpio/toggle', { uuid: "1" });
+                            });
+                            </script>
+                           
+                            <input class="btn btn btn-info" name="on" id="on" value="on" type="submit" />
+                            <script>
+                            $('#on').click(function() {
+                            $.post('/gpio/on', { uuid: "1" });
+                            });
+                            </script>
+
+
+                            <input class="btn btn btn-info" name="off" id="off" value="off" type="submit" />
+                            <script>
+                            $('#off').click(function() {
+                            $.post('/gpio/off', { uuid: "1" });
+                            });
+                            </script>
                         </td>
                         <td>
                             <button type="button" class="btn btn-block btn-primary">
