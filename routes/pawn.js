@@ -26,7 +26,7 @@ exports.homepage = function(req, res) {
 exports.gpioon = function(req, res) {
 	var bcm = req.body.bcm;
 	var exec = require("child_process").exec;
-	exec("gpio -g mode " + bcm +" out" , function(error, stdout, stderr) {
+	exec("gpio -g write " + bcm +" 1" , function(error, stdout, stderr) {
 		console.log("GPIO: " + bcm + " on")
 		if (error !== null) {
 			console.log("exec error: " + error);
@@ -38,7 +38,7 @@ exports.gpioon = function(req, res) {
 exports.gpiooff = function(req, res) {
 	var bcm = req.body.bcm;
 	var exec = require("child_process").exec;
-	exec("gpio -g mode " + bcm +" in", function(error, stdout, stderr) {
+	exec("gpio -g write " + bcm +" 0", function(error, stdout, stderr) {
 		console.log("GPIO: " + bcm + " off")
 		if (error !== null) {
 			console.log("exec error: " + error);
@@ -51,14 +51,14 @@ exports.gpiooff = function(req, res) {
 exports.gpiotoggle = function(req, res) {
 	var bcm = req.body.bcm;
 	var exec = require("child_process").exec;
-	exec("gpio -g mode " + bcm +" out", function(error, stdout, stderr) {
+	exec("gpio -g write " + bcm +" 1", function(error, stdout, stderr) {
 		console.log("GPIO: " + bcm + " Toggled")
 		if (error !== null) {
 			console.log("exec error: " + error);
 		}
 	});
 	var exec = require("child_process").exec;
-	exec("gpio -g mode " + bcm +" in", function(error, stdout, stderr) {
+	exec("gpio -g write " + bcm +" 0", function(error, stdout, stderr) {
 		if (error !== null) {
 			console.log("exec error: " + error);
 		}
