@@ -24,45 +24,45 @@ exports.homepage = function(req, res) {
 };
 
 exports.gpioon = function(req, res) {
-	var uuid = req.body.uuid;
+	var bcm = req.body.bcm;
 	var exec = require("child_process").exec;
-	exec("gpio -g mode 18 out" , function(error, stdout, stderr) {
-		console.log("GPIO 18 on")
+	exec("gpio -g mode" + bcm +" out" , function(error, stdout, stderr) {
+		console.log("GPIO: " + bcm + " on")
 		if (error !== null) {
 			console.log("exec error: " + error);
 		}
-		res.status(200).send("GPIO 18 on ")
+		res.status(200).send("GPIO: " + bcm + " on ")
 	});
 };
 
 exports.gpiooff = function(req, res) {
-	var uuid = req.body.uuid;
+	var bcm = req.body.bcm;
 	var exec = require("child_process").exec;
-	exec("gpio -g mode 18 in", function(error, stdout, stderr) {
-		console.log("GPIO 18 off")
+	exec("gpio -g mode" + bcm +" in", function(error, stdout, stderr) {
+		console.log("GPIO: " + bcm + " off")
 		if (error !== null) {
 			console.log("exec error: " + error);
 		}
-		res.status(200).send("GPIO 18 off")
+		res.status(200).send("GPIO: " + bcm + " off")
 	});
 	
 };
 
 exports.gpiotoggle = function(req, res) {
-	var uuid = req.body.uuid;
+	var bcm = req.body.bcm;
 	var exec = require("child_process").exec;
-	exec("gpio -g mode 18 out", function(error, stdout, stderr) {
-		console.log("GPIO 18 Toggled")
+	exec("gpio -g mode" + bcm +" out", function(error, stdout, stderr) {
+		console.log("GPIO: " + bcm + " Toggled")
 		if (error !== null) {
 			console.log("exec error: " + error);
 		}
 	});
 	var exec = require("child_process").exec;
-	exec("sleep1 ; gpio -g mode 18 in", function(error, stdout, stderr) {
+	exec("gpio -g mode" + bcm +" in", function(error, stdout, stderr) {
 		if (error !== null) {
 			console.log("exec error: " + error);
 		}
-		res.status(200).send("GPIO 18 Toggled")
+		res.status(200).send("GPIO: " + bcm + " Toggled")
 	});
 	
 };
