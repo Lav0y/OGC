@@ -94,24 +94,24 @@
                         </td>
                         <td>
                            
-                            <input class="btn btn btn-info" name="toggle" id="toggle" value="toggle" type="submit" />
+                            <input class="btn btn btn-info" name="<%= rows[i].bcm %>-toggle" id="<%= rows[i].bcm %>-toggle" value="<%= rows[i].bcm %>-toggle" type="submit" />
                             <script>
-                            $('#toggle').click(function() {
+                            $('#<%= rows[i].bcm %>-toggle').click(function() {
                             $.post('/gpio/toggle', { bcm: "<%= rows[i].bcm %>" });
                             });
                             </script>
                            
-                            <input class="btn btn btn-info" name="on" id="on" value="on" type="submit" />
+                            <input class="btn btn btn-info" name="<%= rows[i].bcm %>-on" id="<%= rows[i].bcm %>-on" value="<%= rows[i].bcm %>-on" type="submit" />
                             <script>
-                            $('#on').click(function() {
+                            $('#<%= rows[i].bcm %>-on').click(function() {
                             $.post('/gpio/on', { bcm: "<%= rows[i].bcm %>" });
                             });
                             </script>
 
 
-                            <input class="btn btn btn-info" name="off" id="off" value="off" type="submit" />
+                            <input class="btn btn btn-info" name="<%= rows[i].bcm %>-off" id="<%= rows[i].bcm %>-off" value="<%= rows[i].bcm %>-off" type="submit" />
                             <script>
-                            $('#off').click(function() {
+                            $('#<%= rows[i].bcm %>-off').click(function() {
                             $.post('/gpio/off', { bcm: "<%= rows[i].bcm %>" });
                             });
                             </script>
