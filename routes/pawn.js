@@ -53,18 +53,18 @@ exports.gpiotoggle = function(req, res) {
 	var bcm = req.body.bcm;
 	var exec = require("child_process").exec;
 	exec("gpio -g write " + bcm +" 1", function(error, stdout, stderr) {
-		console.log("GPIO: " + bcm + " Toggled")
+		console.log("GPIO: " + bcm + " Toggled ON")
 		if (error !== null) {
 			console.log("exec error: " + error);
 		}
 	});
-	sleep.sleep(1)
+	sleep.sleep(5)
 	var exec = require("child_process").exec;
 	exec("gpio -g write " + bcm +" 0", function(error, stdout, stderr) {
 		if (error !== null) {
 			console.log("exec error: " + error);
 		}
-		res.status(200).send("GPIO: " + bcm + " Toggled")
+		res.status(200).send("GPIO: " + bcm + " Toggled OFF")
 	});
 	
 };
