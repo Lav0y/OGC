@@ -2,7 +2,6 @@
 
 var mysql = require("mysql");
 var request = require("request");
-var sleep = require("sleep");
 
 var connection = mysql.createPool({
 	multipleStatements: true,
@@ -52,21 +51,11 @@ exports.gpiooff = function(req, res) {
 exports.gpiotoggle = function(req, res) {
 	var bcm = req.body.bcm;
 	var exec = require("child_process").exec;
-	exec("gpio -g write " + bcm +" 1", function(error, stdout, stderr) {
+	exec("gpio -g write " + bcm +" 1 && sleep 1 && gpio -g write " + bcm +" 0", function(error, stdout, stderr) {
 		console.log("GPIO: " + bcm + " Toggled ON")
 		if (error !== null) {
 			console.log("exec error: " + error);
 		}
 	});
-	sleep.sleep(5)
-	var exec = require("child_process").exec;
-	exec("gpio -g write " + bcm +" 0", function(error, stdout, stderr) {
-		if (error !== null) {
-			console.log("exec error: " + error);
-		}
-		res.status(200).send("GPIO: " + bcm + " Toggled OFF")
-	});
-	
 };
 
- 
