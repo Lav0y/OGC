@@ -2,6 +2,7 @@
 
 var mysql = require("mysql");
 var request = require("request");
+var sleep = require("sleep");
 
 var connection = mysql.createPool({
 	multipleStatements: true,
@@ -57,6 +58,7 @@ exports.gpiotoggle = function(req, res) {
 			console.log("exec error: " + error);
 		}
 	});
+	sleep.sleep(1):
 	var exec = require("child_process").exec;
 	exec("gpio -g write " + bcm +" 0", function(error, stdout, stderr) {
 		if (error !== null) {
